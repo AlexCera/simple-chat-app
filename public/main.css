@@ -1,0 +1,31 @@
+.main-card-content {
+    border: none;
+}
+
+.me-message,
+.anonymous-message {
+    background-color: #80808020;
+    padding: .2rem .4rem;
+    border-radius: 5px;
+    border-bottom: 1px solid lightgray;
+}
+
+.me-message {
+    border-radius: 5px;
+    border-bottom: 1px solid lightgray;
+}
+
+.anonymous-message {
+    background-color: #5EB31930;
+    padding: .2rem .4rem;
+}
+
+.form-message {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #00000010 !important;
+    width: 100%;
+    border: none;
+}

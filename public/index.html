@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chateando</title>
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Chateando ✨</a>
+        </div>
+    </nav>
+
+    <!-- chat -->
+    <div class="container mt-2 h-100">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div id="chat-app" class="card main-card-content">
+                    <!-- start card-body -->
+                    <div class="card-body">
+                        <ul class="p-0">
+                            <li v-for="m in messages" :class="m.id == id ? 'text-end me-message' : 'text-start anonymous-message' "
+                                class="w-100 mt-2" style="list-style: none;"><b>{{(m.id == id) ? 'Me' :
+                                    'Anonymous'}}</b>: {{m.body}}</li>
+                        </ul>
+                    </div>
+                    <!-- end card-body -->
+
+                    <!-- start card-footer -->
+                    <div class="card-footer form-message">
+                        <form @submit.prevent="sendMessage" method="post">
+                            <div class="d-flex gap-2">
+                                <input v-model="message" type="text" class="form-control"
+                                    placeholder="Say hello to the community 👋">
+                                <button @click.prevent="sendMessage" :disabled="message.length == 0 ? true:false"
+                                    class="btn btn-dark" type="button">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- end card-footer -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- vue cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <!-- socketio -->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <!-- custom js -->
+    <script src="main.js"></script>
+</body>
+
+</html>
